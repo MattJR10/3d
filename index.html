@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>3D JavaScript Game</title>
+  </head>
+  <body>
+    <h1>3D JavaScript Game</h1>
+    <canvas id="gameCanvas"></canvas>
+    <script>
+      // set the dimensions of the canvas
+      const canvas = document.getElementById('gameCanvas');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      // create the Three.js scene and camera
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, canvas.width / canvas.height, 0.1, 1000);
+
+      // create the WebGL renderer and add it to the canvas
+      const renderer = new THREE.WebGLRenderer({canvas: canvas});
+
+      // create a cube and add it to the scene
+      const geometry = new THREE.BoxGeometry(1, 1, 1);
+      const material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+      const cube = new THREE.Mesh(geometry, material);
+      scene.add(cube);
+
+      // position the camera and start the renderer
+      camera.position.z = 5;
+      renderer.render(scene, camera);
+    </script>
+  </body>
+</html>
